@@ -1,7 +1,7 @@
-<h1>Categorias</h1>
+<h1>Produtos</h1>
 
 <ul>
-    @foreach ($categories as $category)
-        <li>{{ $category->name  }}</li>
+    @foreach ($products as $product)
+        <li>{{ $product->name  }} | {{ $product->description }} | {{ $product->price }}</li>
     @endforeach
 </ul>
