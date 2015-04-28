@@ -1,5 +1,6 @@
 <?php namespace CodeCommerce\Providers;
 
+use CodeCommerce\Category;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -25,6 +26,9 @@ class RouteServiceProvider extends ServiceProvider {
 		//
 		
 		parent::boot($router);
+
+        $router->model('category', 'CodeCommerce\Category');
+        $router->model('product', 'CodeCommerce\Product');
 	}
 
 	/**
