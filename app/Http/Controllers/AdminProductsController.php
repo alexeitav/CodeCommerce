@@ -8,18 +8,58 @@ use CodeCommerce\Product;
 
 class AdminProductsController extends Controller {
 
-    private $products;
+    private $productModel;
 
-    public function __construct(Product $product)
+    public function __construct(Product $productModel)
     {
-        $this->products = $product;
+        $this->productModel = $productModel;
     }
 
     public function index () {
 
-        $products = $this->products->all();
+        $products = $this->productModel->all();
 
-        return view('product', compact('products'));
+        return view('product.index', compact('products'));
+    }
+
+    public function create() {
+
+        return view ('product.create');
+    }
+
+    public function store(Requests\AdminProductRequest $request) {
+
+        $input = $request->all();
+
+        $product = $this->productModel->fill($input);
+
+        $product->save();
+
+        return redirect()->route('product.index');
+
+    }
+
+    public function destroy($id) {
+
+        $this->productModel->find($id)->delete();
+
+        return redirect()->route('product.index');
+
+    }
+
+    public function edit($id) {
+
+        $product = $this->productModel->find($id);
+
+        return view('product.edit', compact('product'));
+    }
+
+    public function update(Requests\AdminProductRequest $request, $id) {
+
+        $this->productModel->find($id)->update($request->all());
+
+        return redirect()->route('product.index');
+
     }
 
 

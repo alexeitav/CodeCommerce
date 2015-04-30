@@ -30,52 +30,48 @@ Route::get('admin/products', 'AdminProductsController@index');
 
 Route::group (['prefix'=>'admin'], function () {
 
-    Route::pattern('category', '[0-9]+');
-    Route::pattern('product', '[0-9]+');
+    //Route::pattern('category', '[0-9]+');
+    //Route::pattern('product', '[0-9]+');
 
     //group Category
     Route::group(['prefix'=>'category'], function(){
 
-        //Create
-        Route::post('create', ['as'=>'category.create', 'uses'=> 'AdminCategoriesController@index']);
+        //Get all categories
+        Route::get ('/', ['as'=>'category.index', 'uses'=> 'AdminCategoriesController@index']);
 
-        //Update
-        Route::put('update/{category?}', ['as'=>'category.update', function (\CodeCommerce\Category $category){
-            dd($category);
-        }]);
+        //Create
+        Route::get('create', ['as'=>'category.create', 'uses'=> 'AdminCategoriesController@create']);
+        Route::post('create', ['as'=>'category.store', 'uses'=> 'AdminCategoriesController@store']);
 
         //Delete
-        Route::delete('delete/{category?}', ['as'=>'category.delete', function (\CodeCommerce\Category $category){
-            dd($category);
-        }]);
+        Route::get('{id}/destroy', ['as'=>'category.destroy', 'uses'=>'AdminCategoriesController@destroy']);
 
-        //Read
-        Route::get('{category?}', ['as'=>'category.get', function (\CodeCommerce\Category $category){
-            dd($category);
-        }]);
+
+        //Update
+        Route::get('{id}/edit', ['as'=>'category.edit', 'uses'=>'AdminCategoriesController@edit']);
+        Route::put('{id}/update', ['as'=>'category.update', 'uses'=>'AdminCategoriesController@update']);
+
 
     });
 
     //group Product
     Route::group(['prefix'=>'product'], function(){
 
-        //Create
-        Route::post('create', ['as'=>'product.create',  'uses'=>'AdminProductsController@index']);
+        //Get all products
+        Route::get ('/', ['as'=>'product.index', 'uses'=> 'AdminProductsController@index']);
 
-        //Update
-        Route::put('update/{product?}', ['as'=>'product.update', function (\CodeCommerce\Product $product){
-            dd($product);
-        }]);
+        //Create
+        Route::get('create', ['as'=>'product.create', 'uses'=> 'AdminProductsController@create']);
+        Route::post('create', ['as'=>'product.store', 'uses'=> 'AdminProductsController@store']);
 
         //Delete
-        Route::delete('delete/{product?}',['as'=>'product.delete', function (\CodeCommerce\Product $product){
-            dd($product);
-        }]);
+        Route::get('{id}/destroy', ['as'=>'product.destroy', 'uses'=>'AdminProductsController@destroy']);
 
-        //Read
-        Route::get('{product?}', ['as'=>'product.get', function (\CodeCommerce\Product $product){
-            dd($product);
-        }]);
+
+        //Update
+        Route::get('{id}/edit', ['as'=>'product.edit', 'uses'=>'AdminProductsController@edit']);
+        Route::put('{id}/update', ['as'=>'product.update', 'uses'=>'AdminProductsController@update']);
+
     });
 });
 

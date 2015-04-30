@@ -2,6 +2,15 @@
 
 Abaixo seguem algumas anotações...
 
+## Fase 04: CRUD
+
+Como não foi definido o que fazer com os campos "featured" e "recommend" do Produtos eu fiz assim:
+ - deixei como valor default na migration esses campos como true
+ - não coloquei esses campos nos formulários de create e edit products.
+
+Aí, mais para frente, quando for definido o que fazer eu completo.
+
+
 ## Fase 03: Criação de Rotas
 
 Desculpe, mas não entendi direito se era para criar todas as rotas do CRUD apontando para um único controle ou se era para separar (uma rota para Create, outra para o Update e assim por diante....).
