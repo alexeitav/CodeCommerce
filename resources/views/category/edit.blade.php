@@ -28,6 +28,7 @@
 
                 <div class="form-group">
                     {!! Form::submit('Save Category', ['class'=>'btn btn-primary']) !!}
+                    <a class="btn btn-default" href="{{ route('category.index') }}">Voltar</a>
                 </div>
 
 

@@ -31,8 +31,21 @@
                     {!! Form::text('price', null, ['class'=>'form-control']) !!}
                 </div>
 
+                <div class=""form-group">
+                    {!! Form::label('featured', 'Featured:') !!}
+                    {!! Form::hidden('featured', 0) !!}
+                    {!! Form::checkbox('featured') !!}
+                </div>
+
+                <div class=""form-group">
+                    {!! Form::label('recommend', 'Recommend:') !!}
+                    {!! Form::hidden('recommend', 0) !!}
+                    {!! Form::checkbox('recommend') !!}
+                </div>
+
                 <div class="form-group">
                     {!! Form::submit('Add Product', ['class'=>'btn btn-primary']) !!}
+                    <a class="btn btn-default" href="{{ route('product.index') }}">Voltar</a>
                 </div>
 
 
