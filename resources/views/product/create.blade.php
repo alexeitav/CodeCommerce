@@ -22,6 +22,11 @@
                 </div>
 
                 <div class="form-group">
+                    {!! Form::label('category', 'Category:') !!}
+                    {!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
+                </div>
+
+                <div class="form-group">
                     {!! Form::label('description', 'Description:') !!}
                     {!! Form::textarea('description', null, ['class'=>'form-control']) !!}
                 </div>
@@ -47,8 +52,6 @@
                     {!! Form::submit('Add Product', ['class'=>'btn btn-primary']) !!}
                     <a class="btn btn-default" href="{{ route('product.index') }}">Voltar</a>
                 </div>
-
-
 
 
             {!! Form::close() !!}

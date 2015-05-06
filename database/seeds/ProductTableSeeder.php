@@ -9,16 +9,17 @@ class ProductTableSeeder extends Seeder{
 
     public function run() {
 
-        DB::table('products')->truncate();
+        //DB::table('products')->truncate();
 
         $faker = Faker::create('pt_BR');
         
-        foreach (range(1,15) as $i) {
+        foreach (range(1,40) as $i) {
 
             Product::create([
                 'name' => $faker->word(),
                 'description' => $faker->sentence(),
-                'price' =>$faker->randomFloat(2,9,100)
+                'price' => $faker->randomFloat(2,9,100),
+                'category_id' => $faker->numberBetween(1,15)
             ]);
 
         }
