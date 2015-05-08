@@ -32,6 +32,7 @@
                     <td>{{ $product->recommend  }}</td>
                     <td>
                         <a href="{{ route('product.edit',['id'=>$product->id])  }}" class="btn btn-xs btn-warning">Edit</a>
+                        <a href="{{ route('product.images',['id'=>$product->id])  }}" class="btn btn-xs btn-info">Images</a>
                         <a href="{{ route('product.destroy',['id'=>$product->id])  }}" class="btn btn-xs btn-danger" >Delete</a>
                     </td>
                 </tr>
