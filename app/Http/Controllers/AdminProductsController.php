@@ -4,6 +4,7 @@ use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
+use CodeCommerce\Tag;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -33,6 +34,19 @@ class AdminProductsController extends Controller
         return view('product.create', compact('categories'));
     }
 
+    public function storeTags($tags)
+    {
+
+        $tags = explode(',', $tags);
+        foreach ($tags as $tag) {
+            Tag::firstOrCreate(['name'=>$tag]);
+            $tagId[] = Tag::where('name','=', $tag)->first()->id;
+        }
+
+        return $tagId;
+
+    }
+
     public function store(Requests\AdminProductRequest $request)
     {
 
@@ -42,12 +56,18 @@ class AdminProductsController extends Controller
 
         $product->save();
 
+        $product->tags()->sync($this->storeTags($request->input('tags')));
+
         return redirect()->route('product.index');
 
     }
 
     public function destroy($id)
     {
+
+        $product = $this->productModel->find($id);
+
+        $product->tags()->sync([]);
 
         $this->productModel->find($id)->delete();
 
@@ -69,6 +89,10 @@ class AdminProductsController extends Controller
     {
 
         $this->productModel->find($id)->update($request->all());
+
+        $product = $this->productModel->find($id);
+
+        $product->tags()->sync($this->storeTags($request->input('tags')));
 
         return redirect()->route('product.index');
 
@@ -116,8 +140,6 @@ class AdminProductsController extends Controller
         if(file_exists(public_path().'uploads/'.$image->id.'.'.$image->extension)) {
             Storage::disk('public_local')->delete($image->id.'.'.$image->extension);
         }
-
-
 
         $product = $image->product;
         $image->delete();
