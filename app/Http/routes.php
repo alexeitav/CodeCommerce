@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 
 Route::get('exemplo', 'WelcomeController@exemplo');
 
@@ -22,10 +21,9 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-/* FASE 2
-Route::get('admin/categories', 'AdminCategoriesController@index');
-Route::get('admin/products', 'AdminProductsController@index');
-*/
+
+Route::get('/', ['as'=>'store.home', 'uses'=>'StoreController@index']);
+Route::get('category/{id}', ['as'=>'store.category', 'uses'=>'StoreController@categoryProducts']);
 
 
 Route::group (['prefix'=>'admin', 'where'=> ['id'=>'[0-9]+']], function () {
