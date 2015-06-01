@@ -8,13 +8,7 @@
     <meta name="author" content="">
     <title>Home | E-Shop</title>
 
-
-    <link href="{{ URL::to('/') }}/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ URL::to('/') }}/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ URL::to('/') }}/css/prettyPhoto.css" rel="stylesheet">
-    <link href="{{ URL::to('/') }}/css/animate.css" rel="stylesheet">
-    <link href="{{ URL::to('/') }}/css/main.css" rel="stylesheet">
-    <link href="{{ URL::to('/') }}/css/responsive.css" rel="stylesheet">
+    <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
 
 
 </head><!--/head-->
@@ -133,9 +127,6 @@
 
 <footer id="footer"><!--Footer-->
 
-
-
-
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
@@ -147,13 +138,7 @@
 
 </footer><!--/Footer-->
 
-
-
-<script src="{{ URL::to('/') }}/js/jquery.js"></script>
-<script src="{{ URL::to('/') }}/js/bootstrap.min.js"></script>
-<script src="{{ URL::to('/') }}/js/jquery.scrollUp.min.js"></script>
-<script src="{{ URL::to('/') }}/js/jquery.prettyPhoto.js"></script>
-<script src="{{ URL::to('/') }}/js/main.js"></script>
+<script src="{{ elixir('js/all.js') }}"></script>
 
 </body>
 </html>

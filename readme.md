@@ -26,3 +26,16 @@ Não sei se era bem isso, mas fiz assim...heheh
 Na parte de validação dos parâmetros eu só validei se o product ou category está no formato numérico (não aceita string).
 
 Na parte de nomear as rotas eu fiz seguindo um padrão qualquer, uma vez que não foi especificado.
+
+
+## GULP
+
+Instalando o Node.js
+ - baixar o arquivo em node.js
+ - Instalar bibliotecas
+    sudo apt-get install g++ curl libssl-dev apache2-utils
+ - tar -xf node-v0.....
+ - acessa a pasta criada do nodejs
+    ./configure
+    make
+    sudo make install
