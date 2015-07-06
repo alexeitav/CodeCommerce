@@ -24,6 +24,8 @@ Route::controllers([
 
 Route::get('/', ['as'=>'store.home', 'uses'=>'StoreController@index']);
 Route::get('category/{id}', ['as'=>'store.category', 'uses'=>'StoreController@categoryProducts']);
+Route::get('product/{id}', ['as'=>'store.product', 'uses'=>'StoreController@product']);
+Route::get('tag/{id}', ['as'=>'store.products.tag', 'uses'=>'StoreController@productsTag']);
 
 
 Route::group (['prefix'=>'admin', 'where'=> ['id'=>'[0-9]+']], function () {

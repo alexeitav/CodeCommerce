@@ -54,5 +54,13 @@ class Product extends Model {
 
     }
 
+    public function scopeOfCategory($query, $type)
+    {
+        return $query->where('category_id', '=', $type);
+
+    }
+
+
+
 
 }
